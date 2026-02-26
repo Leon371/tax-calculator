@@ -1,0 +1,117 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 城市选择 -->
+  <view class="card city-card" bindtap="goToCitySelect">
+    <view class="city-label">所在城市</view>
+    <view class="city-value">
+      <text>{{userData.city}}</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <!-- 收入信息 -->
+  <view class="card">
+    <view class="card-title">收入信息</view>
+    
+    <view class="input-group">
+      <text class="input-label">月薪（元）</text>
+      <input 
+        class="input" 
+        type="digit" 
+        placeholder="请输入月工资" 
+        value="{{userData.baseSalary}}"
+        bindinput="onSalaryInput"
+      />
+    </view>
+
+    <view class="input-group">
+      <text class="input-label">年终奖（元）</text>
+      <input 
+        class="input" 
+        type="digit" 
+        placeholder="请输入年终奖（选填）" 
+        value="{{userData.bonus}}"
+        bindinput="onBonusInput"
+      />
+    </view>
+  </view>
+
+  <!-- 社保公积金 -->
+  <view class="card">
+    <view class="card-title">社保公积金（每月）</view>
+    <view class="input-group">
+      <view class="input-label-wrap">
+        <text class="input-label">养老保险</text>
+        <text class="input-hint">基数×8%</text>
+      </view>
+      <input class="input" type="digit" placeholder="0" value="{{userData.socialSecurity.pension}}" bindinput="onPensionInput"/>
+    </view>
+    <view class="input-group">
+      <view class="input-label-wrap">
+        <text class="input-label">医疗保险</text>
+        <text class="input-hint">基数×2%</text>
+      </view>
+      <input class="input" type="digit" placeholder="0" value="{{userData.socialSecurity.medical}}" bindinput="onMedicalInput"/>
+    </view>
+    <view class="input-group">
+      <view class="input-label-wrap">
+        <text class="input-label">失业保险</text>
+        <text class="input-hint">基数×0.5%</text>
+      </view>
+      <input class="input" type="digit" placeholder="0" value="{{userData.socialSecurity.unemployment}}" bindinput="onUnemploymentInput"/>
+    </view>
+    <view class="input-group">
+      <view class="input-label-wrap">
+        <text class="input-label">住房公积金</text>
+        <text class="input-hint">基数×7%</text>
+      </view>
+      <input class="input" type="digit" placeholder="0" value="{{userData.socialSecurity.housingFund}}" bindinput="onHousingInput"/>
+    </view>
+    <view class="auto-calc" bindtap="autoCalculateSocial">
+      <text>自动计算社保公积金</text>
+    </view>
+  </view>
+
+  <!-- 专项附加扣除 -->
+  <view class="card">
+    <view class="card-title">专项附加扣除（每月）</view>
+    <view class="deduction-list">
+      <view class="deduction-item">
+        <text>子女教育</text>
+        <input class="input-small" type="digit" placeholder="0" value="{{userData.extraDeduction.children}}" bindinput="onChildrenInput"/>
+      </view>
+      <view class="deduction-item">
+        <text>赡养老人</text>
+        <input class="input-small" type="digit" placeholder="0" value="{{userData.extraDeduction.elderly}}" bindinput="onElderlyInput"/>
+      </view>
+      <view class="deduction-item">
+        <text>住房贷款利息</text>
+        <input class="input-small" type="digit" placeholder="0" value="{{userData.extraDeduction.housingLoan}}" bindinput="onHousingLoanInput"/>
+      </view>
+      <view class="deduction-item">
+        <text>住房租金</text>
+        <input class="input-small" type="digit" placeholder="0" value="{{userData.extraDeduction.housingRent}}" bindinput="onHousingRentInput"/>
+      </view>
+      <view class="deduction-item">
+        <text>继续教育</text>
+        <input class="input-small" type="digit" placeholder="0" value="{{userData.extraDeduction.continuing}}" bindinput="onContinuingInput"/>
+      </view>
+      <view class="deduction-item">
+        <text>婴幼儿照护</text>
+        <input class="input-small" type="digit" placeholder="0" value="{{userData.extraDeduction.baby}}" bindinput="onBabyInput"/>
+      </view>
+      <view class="deduction-item">
+        <text>大病医疗（年度）</text>
+        <input class="input-small" type="digit" placeholder="0" value="{{userData.extraDeduction.medical}}" bindinput="onMedicalDeductionInput"/>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="bottom-bar">
+    <view class="btn-group">
+      <view class="btn btn-secondary" bindtap="goToTaxTable">税率表</view>
+      <view class="btn btn-primary" bindtap="calculateTax">开始计算</view>
+    </view>
+  </view>
+</view>

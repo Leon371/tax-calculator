@@ -1,0 +1,42 @@
+<!--pages/tax-table/tax-table.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="title">个人所得税税率表</view>
+    <view class="subtitle">综合所得适用</view>
+  </view>
+
+  <view class="card">
+    <view class="table">
+      <view class="table-header">
+        <text>级数</text>
+        <text>全年应纳税所得额</text>
+        <text>税率</text>
+        <text>速算扣除数</text>
+      </view>
+      <view class="table-row" wx:for="{{taxBrackets}}" wx:key="index">
+        <text>{{index + 1}}</text>
+        <text>{{item.range}}</text>
+        <text>{{item.rate}}</text>
+        <text>{{item.deduction}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">说明</view>
+    <view class="explain">
+      <view class="explain-item">• 应纳税所得额 = 年度收入 - 60000元 - 专项扣除 - 专项附加扣除</view>
+      <view class="explain-item">• 专项扣除包括：基本养老保险、基本医疗保险、失业保险等</view>
+      <view class="explain-item">• 专项附加扣除包括：子女教育、继续教育、住房贷款利息等7项</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">年终奖税率表</view>
+    <view class="explain">
+      <view class="explain-item">• 年终奖可选择单独计税或并入综合所得</view>
+      <view class="explain-item">• 单独计税：以年终奖除以12个月的金额确定适用税率</view>
+      <view class="explain-item">• 计算公式：应纳税额 = 年终奖 × 适用税率 - 速算扣除数</view>
+    </view>
+  </view>
+</view>

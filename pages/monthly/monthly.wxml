@@ -1,0 +1,57 @@
+<!--pages/monthly/monthly.wxml-->
+<view class="container">
+  <view class="month-selector">
+    <view class="month-btn" bindtap="prevMonth">&lt;</view>
+    <view class="month-display">{{year}}年{{month}}月</view>
+    <view class="month-btn" bindtap="nextMonth">&gt;</view>
+  </view>
+
+  <view class="card summary">
+    <view class="summary-title">本月应缴税额</view>
+    <view class="summary-value">¥{{monthlyTax}}</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">累计数据（1-{{month}}月）</view>
+    <view class="detail-row">
+      <text>累计收入</text>
+      <text>¥{{cumulativeData.totalIncome}}</text>
+    </view>
+    <view class="detail-row">
+      <text>累计减除费用</text>
+      <text>¥{{cumulativeData.totalDeduction}}</text>
+    </view>
+    <view class="detail-row">
+      <text>累计社保公积金</text>
+      <text>¥{{cumulativeData.totalSocial}}</text>
+    </view>
+    <view class="detail-row">
+      <text>累计专项附加扣除</text>
+      <text>¥{{cumulativeData.totalExtra}}</text>
+    </view>
+    <view class="detail-row highlight">
+      <text>累计应税所得</text>
+      <text>¥{{cumulativeData.taxableIncome}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">税额计算</view>
+    <view class="detail-row">
+      <text>累计应纳税额</text>
+      <text>¥{{cumulativeData.cumulativeTax}}</text>
+    </view>
+    <view class="detail-row">
+      <text>已缴税额</text>
+      <text>¥{{cumulativeData.paidTax}}</text>
+    </view>
+    <view class="detail-row highlight">
+      <text>本月应缴</text>
+      <text class="highlight-value">¥{{monthlyTax}}</text>
+    </view>
+  </view>
+
+  <view class="tip">
+    <text>注：采用累计预扣法，每月税额 = 累计税额 - 已缴税额</text>
+  </view>
+</view>

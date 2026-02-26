@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/result/result",
+    "pages/tax-table/tax-table",
+    "pages/city-select/city-select",
+    "pages/monthly/monthly"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0AAD8C",
+    "navigationBarTitleText": "个税计算器",
+    "navigationBarTextStyle": "white"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于自动识别当地社保公积金政策"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

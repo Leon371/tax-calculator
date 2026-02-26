@@ -1,0 +1,75 @@
+<!--pages/result/result.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="header-title">计算结果</view>
+    <view class="header-subtitle">{{result.city}}</view>
+  </view>
+
+  <view class="card main-result">
+    <view class="result-label">年度应纳税额</view>
+    <view class="result-value">¥{{result.totalTax}}</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">收入明细（年度）</view>
+    <view class="detail-row">
+      <text>月薪收入</text>
+      <text>¥{{result.monthlySalary * 12}}</text>
+    </view>
+    <view class="detail-row">
+      <text>年终奖</text>
+      <text>¥{{result.bonus}}</text>
+    </view>
+    <view class="detail-row highlight">
+      <text>年度总收入</text>
+      <text>¥{{result.annualIncome}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">扣除明细（年度）</view>
+    <view class="detail-row">
+      <text>基本减除费用</text>
+      <text>¥{{5000 * 12}}</text>
+    </view>
+    <view class="detail-row">
+      <text>社保公积金</text>
+      <text>¥{{result.socialSecurity * 12}}</text>
+    </view>
+    <view class="detail-row">
+      <text>专项附加扣除</text>
+      <text>¥{{result.extraDeduction * 12}}</text>
+    </view>
+    <view class="detail-row highlight">
+      <text>应纳税所得额</text>
+      <text>¥{{result.taxableIncome * 12}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">税额明细</view>
+    <view class="detail-row">
+      <text>月薪税额（每月）</text>
+      <text>¥{{result.monthlyTax}}</text>
+    </view>
+    <view class="detail-row">
+      <text>年终奖税额</text>
+      <text>¥{{result.bonusTax}}</text>
+    </view>
+    <view class="detail-row highlight">
+      <text>年度税额合计</text>
+      <text class="highlight-value">¥{{result.totalTax}}</text>
+    </view>
+  </view>
+
+  <view class="card final-result">
+    <view class="card-title">税后收入</view>
+    <view class="final-value">¥{{result.afterTaxIncome}}</view>
+    <view class="final-label">年度税后收入</view>
+  </view>
+
+  <view class="btn-group">
+    <view class="btn btn-secondary" bindtap="goToMonthly">累计月报</view>
+    <view class="btn btn-primary" bindtap="goBack">重新计算</view>
+  </view>
+</view>

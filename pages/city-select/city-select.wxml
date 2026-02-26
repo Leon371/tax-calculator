@@ -1,0 +1,32 @@
+<!--pages/city-select/city-select.wxml-->
+<view class="container">
+  <view class="search-box">
+    <input 
+      class="search-input" 
+      placeholder="搜索城市" 
+      bindinput="onSearch"
+      value="{{searchKey}}"
+    />
+  </view>
+
+  <view class="current-city" bindtap="selectCity" data-city="{{currentCity}}">
+    <text class="label">当前定位城市</text>
+    <view class="city-item">
+      <text>{{currentCity}}</text>
+      <text class="check">✓</text>
+    </view>
+  </view>
+
+  <view class="section-title">热门城市</view>
+  <view class="city-list">
+    <view 
+      class="city-tag {{item.cityName === selectedCity ? 'active' : ''}}" 
+      wx:for="{{filteredCities}}" 
+      wx:key="cityCode"
+      bindtap="selectCity"
+      data-city="{{item.cityName}}"
+    >
+      {{item.cityName}}
+    </view>
+  </view>
+</view>
