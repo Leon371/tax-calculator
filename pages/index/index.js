@@ -30,10 +30,10 @@ Page({
     if (cityConfig) {
       this.setData({
         cityRates: {
-          pension: (cityConfig.pension * 100).toFixed(0) + '%',
-          medical: (cityConfig.medical * 100).toFixed(0) + '%',
-          unemployment: (cityConfig.unemployment * 100).toFixed(1) + '%',
-          housingFund: (cityConfig.housingFundRate * 100).toFixed(0) + '%'
+          pension: Math.round(cityConfig.pension * 100) + '%',
+          medical: Math.round(cityConfig.medical * 100) + '%',
+          unemployment: Math.round(cityConfig.unemployment * 1000) / 10 + '%',
+          housingFund: Math.round(cityConfig.housingFundRate * 100) + '%'
         }
       })
     }
