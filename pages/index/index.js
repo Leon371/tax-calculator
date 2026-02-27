@@ -178,15 +178,30 @@ Page({
     }
 
     const monthlyDeduction = 5000 // 每月减除费用
-    const totalMonthlySocial = socialSecurity.pension + socialSecurity.medical + 
-                               socialSecurity.unemployment + socialSecurity.housingFund
-    const totalExtraMonthly = extraDeduction.children + extraDeduction.elderly + 
-                             extraDeduction.housingLoan + extraDeduction.housingRent + 
-                             extraDeduction.continuing + extraDeduction.baby
-    const medicalYearly = extraDeduction.medical // 大病医疗是年度扣除
+    const base = Number(baseSalary) || 0
+    const bonusVal = Number(bonus) || 0
+    const social = {
+      pension: Number(socialSecurity.pension) || 0,
+      medical: Number(socialSecurity.medical) || 0,
+      unemployment: Number(socialSecurity.unemployment) || 0,
+      housingFund: Number(socialSecurity.housingFund) || 0
+    }
+    const extra = {
+      children: Number(extraDeduction.children) || 0,
+      elderly: Number(extraDeduction.elderly) || 0,
+      housingLoan: Number(extraDeduction.housingLoan) || 0,
+      housingRent: Number(extraDeduction.housingRent) || 0,
+      continuing: Number(extraDeduction.continuing) || 0,
+      baby: Number(extraDeduction.baby) || 0,
+      medical: Number(extraDeduction.medical) || 0
+    }
+    
+    const totalMonthlySocial = social.pension + social.medical + social.unemployment + social.housingFund
+    const totalExtraMonthly = extra.children + extra.elderly + extra.housingLoan + extra.housingRent + extra.continuing + extra.baby
+    const medicalYearly = extra.medical // 大病医疗是年度扣除
 
     // 月薪应纳税所得额（年度）
-    const taxableIncome = (baseSalary - monthlyDeduction - totalMonthlySocial - totalExtraMonthly) * 12 - medicalYearly
+    const taxableIncome = (base - monthlyDeduction - totalMonthlySocial - totalExtraMonthly) * 12 - medicalYearly
     
     // 计算年度税额
     const yearlyTax = config.calculateTax(taxableIncome)
@@ -195,20 +210,20 @@ Page({
     // 年终奖计算（单独计税）
     let bonusTax = 0
     if (bonus > 0) {
-      const bonusTaxable = bonus - 5000
+      const bonusTaxable = bonusVal - 5000
       bonusTax = config.calculateTax(bonusTaxable)
     }
 
     const totalTax = yearlyTax + bonusTax
-    const annualIncome = baseSalary * 12 + bonus
+    const annualIncome = base * 12 + bonusVal
     const afterTaxIncome = annualIncome - totalTax
 
     // 存储计算结果
     const result = {
       city,
-      monthlySalary: baseSalary,
-      bonus,
-      annualIncome,
+      monthlySalary: base,
+      bonus: bonusVal,
+      annualIncome: base * 12 + bonusVal,
       monthlyTax: Math.round(monthlyTax),
       bonusTax,
       totalTax: Math.round(totalTax),
