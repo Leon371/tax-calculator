@@ -89,6 +89,23 @@
   font-size: 32rpx;
 }
 
+.final-result {
+  text-align: center;
+  background: linear-gradient(135deg, #ff9500 0%, #ffaa33 100%);
+}
+
+.final-result .final-value {
+  font-size: 56rpx;
+  font-weight: 700;
+  color: #fff;
+  margin: 10rpx 0;
+}
+
+.final-result .final-label {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .tip {
   text-align: center;
   font-size: 24rpx;
