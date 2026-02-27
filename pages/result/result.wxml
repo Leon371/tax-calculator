@@ -63,7 +63,7 @@
   </view>
 
   <view class="btn-group">
-    <view class="btn btn-secondary" bindtap="goToMonthly">累计月报</view>
-    <view class="btn btn-primary" bindtap="goBack">重新计算</view>
+    <view class="btn btn-secondary" bindtap="goToMonthly">月度收入</view>
+    <view class="btn btn-primary" bindtap="goBack">税后收入（年度）</view>
   </view>
 </view>
