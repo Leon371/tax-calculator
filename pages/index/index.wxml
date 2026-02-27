@@ -42,28 +42,28 @@
     <view class="input-group">
       <view class="input-label-wrap">
         <text class="input-label">养老保险</text>
-        <text class="input-hint">基数×8%</text>
+        <text class="input-hint">基数×{{cityRates.pension}}</text>
       </view>
       <input class="input" type="digit" placeholder="0" value="{{userData.socialSecurity.pension}}" bindinput="onPensionInput"/>
     </view>
     <view class="input-group">
       <view class="input-label-wrap">
         <text class="input-label">医疗保险</text>
-        <text class="input-hint">基数×2%</text>
+        <text class="input-hint">基数×{{cityRates.medical}}</text>
       </view>
       <input class="input" type="digit" placeholder="0" value="{{userData.socialSecurity.medical}}" bindinput="onMedicalInput"/>
     </view>
     <view class="input-group">
       <view class="input-label-wrap">
         <text class="input-label">失业保险</text>
-        <text class="input-hint">基数×0.5%</text>
+        <text class="input-hint">基数×{{cityRates.unemployment}}</text>
       </view>
       <input class="input" type="digit" placeholder="0" value="{{userData.socialSecurity.unemployment}}" bindinput="onUnemploymentInput"/>
     </view>
     <view class="input-group">
       <view class="input-label-wrap">
         <text class="input-label">住房公积金</text>
-        <text class="input-hint">基数×7%</text>
+        <text class="input-hint">基数×{{cityRates.housingFund}}</text>
       </view>
       <input class="input" type="digit" placeholder="0" value="{{userData.socialSecurity.housingFund}}" bindinput="onHousingInput"/>
     </view>

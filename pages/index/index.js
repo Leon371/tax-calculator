@@ -3,15 +3,40 @@ const config = require('../../utils/config.js')
 
 Page({
   data: {
-    userData: {}
+    userData: {},
+    cityRates: {
+      pension: '8%',
+      medical: '2%',
+      unemployment: '0.5%',
+      housingFund: '7%'
+    }
   },
 
   onLoad() {
     this.loadUserData()
+    this.updateCityRates()
   },
 
   onShow() {
     this.loadUserData()
+    setTimeout(() => {
+      this.updateCityRates()
+    }, 100)
+  },
+
+  updateCityRates() {
+    const city = this.data.userData.city
+    const cityConfig = config.getCityConfig(city)
+    if (cityConfig) {
+      this.setData({
+        cityRates: {
+          pension: (cityConfig.pension * 100) + '%',
+          medical: (cityConfig.medical * 100) + '%',
+          unemployment: (cityConfig.unemployment * 100) + '%',
+          housingFund: (cityConfig.housingFundRate * 100) + '%'
+        }
+      })
+    }
   },
 
   loadUserData() {
