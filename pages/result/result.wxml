@@ -14,7 +14,7 @@
     <view class="card-title">收入明细（年度）</view>
     <view class="detail-row">
       <text>月薪收入</text>
-      <text>¥{{result.monthlySalary * 12}}</text>
+      <text>¥{{result.yearlySalary}}</text>
     </view>
     <view class="detail-row">
       <text>年终奖</text>
@@ -30,19 +30,19 @@
     <view class="card-title">扣除明细（年度）</view>
     <view class="detail-row">
       <text>基本减除费用</text>
-      <text>¥{{5000 * 12}}</text>
+      <text>¥60000</text>
     </view>
     <view class="detail-row">
       <text>社保公积金</text>
-      <text>¥{{result.socialSecurity * 12}}</text>
+      <text>¥{{result.yearlySocial}}</text>
     </view>
     <view class="detail-row">
       <text>专项附加扣除</text>
-      <text>¥{{result.extraDeduction * 12}}</text>
+      <text>¥{{result.yearlyExtra}}</text>
     </view>
     <view class="detail-row highlight">
       <text>应纳税所得额</text>
-      <text>¥{{result.taxableIncome * 12}}</text>
+      <text>¥{{result.yearlyTaxable}}</text>
     </view>
   </view>
 

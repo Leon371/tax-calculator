@@ -6,7 +6,7 @@ Page({
 
   onLoad() {
     const result = wx.getStorageSync('taxResult') || {}
-    // 格式化所有数值保留一位小数
+    // 格式化所有数值取整
     const format = (num) => Math.round(num)
     const formatted = {
       ...result,
@@ -19,7 +19,12 @@ Page({
       afterTaxIncome: format(result.afterTaxIncome),
       socialSecurity: format(result.socialSecurity),
       extraDeduction: format(result.extraDeduction),
-      taxableIncome: format(result.taxableIncome)
+      taxableIncome: format(result.taxableIncome),
+      // 预先算好年度值，避免wxml里运算产生小数
+      yearlySalary: format(result.monthlySalary * 12),
+      yearlySocial: format(result.socialSecurity * 12),
+      yearlyExtra: format(result.extraDeduction * 12),
+      yearlyTaxable: format(result.taxableIncome * 12)
     }
     this.setData({ result: formatted })
   },
