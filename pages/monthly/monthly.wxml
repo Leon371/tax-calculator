@@ -11,11 +11,6 @@
     <view class="final-label">本月税后收入</view>
   </view>
 
-  <view class="card summary">
-    <view class="summary-title">本月应缴税额</view>
-    <view class="summary-value">¥{{monthlyTax}}</view>
-  </view>
-
   <view class="card">
     <view class="card-title">累计数据（1-{{month}}月）</view>
     <view class="detail-row">
@@ -49,6 +44,10 @@
     <view class="detail-row">
       <text>已缴税额</text>
       <text>¥{{cumulativeData.paidTax}}</text>
+    </view>
+    <view class="detail-row highlight">
+      <text>本月应缴税额</text>
+      <text class="highlight-value">¥{{monthlyTax}}</text>
     </view>
   </view>
 
