@@ -55,7 +55,7 @@ Page({
     const { baseSalary, bonus, socialSecurity, extraDeduction } = userData
     
     if (!baseSalary) {
-      this.setData({ monthlyTax: 0 })
+      this.setData({ monthlyTax: 0, monthlyIncome: 0 })
       return
     }
 
@@ -99,8 +99,12 @@ Page({
     // 当月应缴 = 累计 - 已缴
     const monthlyTax = Math.max(0, cumulativeTax - paidTax)
     
+    // 当月税后收入
+    const monthlyIncome = baseSalary - totalMonthlySocial - totalExtraMonthly - monthlyTax
+    
     this.setData({
       monthlyTax: monthlyTax.toFixed(1),
+      monthlyIncome: monthlyIncome.toFixed(1),
       cumulativeData: {
         totalIncome: totalIncome.toFixed(1),
         totalDeduction: totalDeduction.toFixed(1),
