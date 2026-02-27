@@ -6,6 +6,7 @@
     "pages/city-select/city-select",
     "pages/monthly/monthly"
   ],
+  "lazyCodeLoading": "requiredComponents",
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#0AAD8C",
