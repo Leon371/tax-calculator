@@ -213,9 +213,9 @@ Page({
       bonusTax,
       totalTax: Math.round(totalTax),
       afterTaxIncome: Math.round(afterTaxIncome),
-      socialSecurity: totalMonthlySocial,
-      extraDeduction: totalExtraMonthly + medicalYearly,
-      taxableIncome: taxableIncome / 12
+      socialSecurity: Math.round(totalMonthlySocial),
+      extraDeduction: Math.round(totalExtraMonthly + medicalYearly),
+      taxableIncome: Math.round(taxableIncome / 12)
     }
 
     wx.setStorageSync('taxResult', result)
