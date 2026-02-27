@@ -30,10 +30,11 @@ Page({
     if (cityConfig) {
       this.setData({
         cityRates: {
-          pension: (cityConfig.pension * 100) + '%',
-          medical: (cityConfig.medical * 100) + '%',
-          unemployment: (cityConfig.unemployment * 100) + '%',
-          housingFund: (cityConfig.housingFundRate * 100) + '%'
+          pension: (cityConfig.pension * 100).toFixed(0) + '%',
+          medical: (cityConfig.medical * 100).toFixed(0) + '%',
+          unemployment: (cityConfig.unemployment * 100).toFixed(1) + '%',
+          housingFund: (cityConfig.housingFundRate * 100).toFixed(0) + '%'
+        }
         }
       })
     }
