@@ -182,11 +182,12 @@ Page({
                              extraDeduction.continuing + extraDeduction.baby
     const medicalYearly = extraDeduction.medical / 12 // 大病医疗分摊到每月
 
-    // 月薪应纳税所得额
-    const taxableIncome = baseSalary - monthlyDeduction - totalMonthlySocial - totalExtraMonthly - medicalYearly
+    // 月薪应纳税所得额（年度）
+    const taxableIncome = (baseSalary - monthlyDeduction - totalMonthlySocial - totalExtraMonthly - medicalYearly) * 12
     
-    // 计算月薪税额
-    const monthlyTax = config.calculateTax(taxableIncome)
+    // 计算年度税额
+    const yearlyTax = config.calculateTax(taxableIncome)
+    const monthlyTax = yearlyTax / 12
     
     // 年终奖计算（单独计税）
     let bonusTax = 0
@@ -195,9 +196,9 @@ Page({
       bonusTax = config.calculateTax(bonusTaxable)
     }
 
-    const totalTax = monthlyTax + bonusTax
+    const totalTax = yearlyTax + bonusTax
     const annualIncome = baseSalary * 12 + bonus
-    const afterTaxIncome = annualIncome - totalTax * 12
+    const afterTaxIncome = annualIncome - totalTax
 
     // 存储计算结果
     const result = {
@@ -205,13 +206,13 @@ Page({
       monthlySalary: baseSalary,
       bonus,
       annualIncome,
-      monthlyTax,
+      monthlyTax: Math.round(monthlyTax),
       bonusTax,
-      totalTax: totalTax * 12,
-      afterTaxIncome,
+      totalTax: Math.round(totalTax),
+      afterTaxIncome: Math.round(afterTaxIncome),
       socialSecurity: totalMonthlySocial,
       extraDeduction: totalExtraMonthly + medicalYearly,
-      taxableIncome
+      taxableIncome: taxableIncome / 12
     }
 
     wx.setStorageSync('taxResult', result)
