@@ -214,7 +214,7 @@ Page({
       totalTax: Math.round(totalTax),
       afterTaxIncome: Math.round(afterTaxIncome),
       socialSecurity: Math.round(totalMonthlySocial),
-      extraDeduction: Math.round(totalExtraMonthly + medicalYearly),
+      extraDeduction: Math.round(totalExtraMonthly * 12 + medicalYearly),
       taxableIncome: Math.round(taxableIncome / 12)
     }
 
