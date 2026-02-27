@@ -13,6 +13,9 @@ Page({
   },
 
   onLoad() {
+    // 清除缓存数据，重新开始
+    wx.removeStorageSync('userData')
+    wx.removeStorageSync('taxResult')
     this.loadUserData()
     this.updateCityRates()
   },
