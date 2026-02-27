@@ -108,16 +108,16 @@ Page({
     const monthlyIncome = baseSalary - totalMonthlySocial - totalExtraMonthly - monthlyTax
     
     this.setData({
-      monthlyTax: monthlyTax.toFixed(1),
-      monthlyIncome: monthlyIncome.toFixed(1),
+      monthlyTax: Math.round(monthlyTax),
+      monthlyIncome: Math.round(monthlyIncome),
       cumulativeData: {
-        totalIncome: totalIncome.toFixed(1),
-        totalDeduction: totalDeduction.toFixed(1),
-        totalSocial: totalSocial.toFixed(1),
-        totalExtra: totalExtra.toFixed(1),
-        taxableIncome: taxableIncome.toFixed(1),
-        cumulativeTax: cumulativeTax.toFixed(1),
-        paidTax: paidTax.toFixed(1)
+        totalIncome: Math.round(totalIncome),
+        totalDeduction: Math.round(totalDeduction),
+        totalSocial: Math.round(totalSocial),
+        totalExtra: Math.round(totalExtra),
+        taxableIncome: Math.round(taxableIncome),
+        cumulativeTax: Math.round(cumulativeTax),
+        paidTax: Math.round(paidTax)
       }
     })
   }

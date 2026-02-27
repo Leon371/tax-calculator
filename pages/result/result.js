@@ -7,7 +7,7 @@ Page({
   onLoad() {
     const result = wx.getStorageSync('taxResult') || {}
     // 格式化所有数值保留一位小数
-    const format = (num) => Number(num).toFixed(1)
+    const format = (num) => Math.round(num)
     const formatted = {
       ...result,
       monthlySalary: format(result.monthlySalary),
@@ -25,6 +25,8 @@ Page({
   },
 
   goBack() {
+    wx.removeStorageSync('userData')
+    wx.removeStorageSync('taxResult')
     wx.navigateBack()
   },
 
