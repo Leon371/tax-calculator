@@ -121,6 +121,11 @@
 .btn-secondary {
   background: #f0f0f0;
   color: #666;
+  cursor: pointer;
+}
+
+.btn-secondary:active {
+  background: #e0e0e0;
 }
 
 .btn-current {
