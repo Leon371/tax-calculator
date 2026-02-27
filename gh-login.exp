@@ -1,0 +1,54 @@
+#!/usr/bin/expect -f
+
+set timeout 120
+
+# 启动 gh auth login
+spawn gh auth login --web false
+
+expect {
+    "Where do you use GitHub?" {
+        send "\r"
+    }
+    timeout {
+        exit 1
+    }
+}
+
+expect {
+    "What is your preferred protocol" {
+        send "\r"
+    }
+    timeout {
+        exit 1
+    }
+}
+
+expect {
+    "Authenticate Git" {
+        send "Y\r"
+    }
+    timeout {
+        exit 1
+    }
+}
+
+expect {
+    "How would you like to authenticate" {
+        send "\r"
+    }
+    timeout {
+        exit 1
+    }
+}
+
+expect {
+    "one-time code" {
+        exp_internal 1
+        sleep 60
+    }
+    timeout {
+        exit 0
+    }
+}
+
+expect eof
