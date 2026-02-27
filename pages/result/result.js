@@ -7,7 +7,11 @@ Page({
   onLoad() {
     const result = wx.getStorageSync('taxResult') || {}
     // 格式化所有数值取整
-    const format = (num) => Math.round(num)
+    const format = (num) => Math.round(Number(num) || 0)
+    
+    // 专项扣除已经是年度值
+    const extraYearly = format(result.extraDeduction)
+    
     const formatted = {
       ...result,
       monthlySalary: format(result.monthlySalary),
@@ -18,12 +22,12 @@ Page({
       totalTax: format(result.totalTax),
       afterTaxIncome: format(result.afterTaxIncome),
       socialSecurity: format(result.socialSecurity),
-      extraDeduction: format(result.extraDeduction),
+      extraDeduction: extraYearly,
       taxableIncome: format(result.taxableIncome),
-      // 预先算好年度值，避免wxml里运算产生小数
+      // 年度值直接用
       yearlySalary: format(result.monthlySalary * 12),
       yearlySocial: format(result.socialSecurity * 12),
-      yearlyExtra: format(result.extraDeduction), // 已经是年度值
+      yearlyExtra: extraYearly,
       yearlyTaxable: format(result.taxableIncome * 12)
     }
     this.setData({ result: formatted })
