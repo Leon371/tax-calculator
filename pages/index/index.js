@@ -183,10 +183,10 @@ Page({
     const totalExtraMonthly = extraDeduction.children + extraDeduction.elderly + 
                              extraDeduction.housingLoan + extraDeduction.housingRent + 
                              extraDeduction.continuing + extraDeduction.baby
-    const medicalYearly = extraDeduction.medical / 12 // 大病医疗分摊到每月
+    const medicalYearly = extraDeduction.medical // 大病医疗是年度扣除
 
     // 月薪应纳税所得额（年度）
-    const taxableIncome = (baseSalary - monthlyDeduction - totalMonthlySocial - totalExtraMonthly - medicalYearly) * 12
+    const taxableIncome = (baseSalary - monthlyDeduction - totalMonthlySocial - totalExtraMonthly) * 12 - medicalYearly
     
     // 计算年度税额
     const yearlyTax = config.calculateTax(taxableIncome)
