@@ -189,12 +189,13 @@ function calculateSocialSecurity(cityName, salary) {
   }
   
   const base = Math.max(config.baseLower, Math.min(salary, config.baseUpper))
+  const baseInt = Math.round(base) // 确保基数是整数
   
   return {
-    pension: Math.round(base * config.pension),
-    medical: Math.round(base * config.medical),
-    unemployment: Math.round(base * config.unemployment),
-    housingFund: Math.round(base * config.housingFundRate)
+    pension: Math.round(baseInt * config.pension),
+    medical: Math.round(baseInt * config.medical),
+    unemployment: Math.round(baseInt * config.unemployment),
+    housingFund: Math.round(baseInt * config.housingFundRate)
   }
 }
 
