@@ -5,6 +5,11 @@
     <view class="header-subtitle">{{result.city}}</view>
   </view>
 
+  <view class="card final-result">
+    <view class="final-value">¥{{result.afterTaxIncome}}</view>
+    <view class="final-label">税后收入（年度）</view>
+  </view>
+
   <view class="card main-result">
     <view class="result-label">年度应纳税额</view>
     <view class="result-value">¥{{result.totalTax}}</view>
@@ -56,16 +61,6 @@
       <text>年终奖税额</text>
       <text>¥{{result.bonusTax}}</text>
     </view>
-    <view class="detail-row highlight">
-      <text>年度税额合计</text>
-      <text class="highlight-value">¥{{result.totalTax}}</text>
-    </view>
-  </view>
-
-  <view class="card final-result">
-    <view class="card-title">税后收入</view>
-    <view class="final-value">¥{{result.afterTaxIncome}}</view>
-    <view class="final-label">年度税后收入</view>
   </view>
 
   <view class="btn-group">
