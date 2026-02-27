@@ -91,7 +91,7 @@
 
 .final-result {
   text-align: center;
-  background: linear-gradient(135deg, #ff9500 0%, #ffaa33 100%);
+  background: linear-gradient(135deg, #0AAD8C 0%, #07c4a4 100%);
 }
 
 .final-result .final-value {
