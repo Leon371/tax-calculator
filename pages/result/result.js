@@ -23,7 +23,7 @@ Page({
       // 预先算好年度值，避免wxml里运算产生小数
       yearlySalary: format(result.monthlySalary * 12),
       yearlySocial: format(result.socialSecurity * 12),
-      yearlyExtra: format(result.extraDeduction * 12),
+      yearlyExtra: format(result.extraDeduction), // 已经是年度值
       yearlyTaxable: format(result.taxableIncome * 12)
     }
     this.setData({ result: formatted })
