@@ -35,7 +35,6 @@ Page({
           unemployment: (cityConfig.unemployment * 100).toFixed(1) + '%',
           housingFund: (cityConfig.housingFundRate * 100).toFixed(0) + '%'
         }
-        }
       })
     }
   },
