@@ -96,6 +96,11 @@ Page({
       paidTax = config.calculateTax(prevTaxable)
     }
     
+    // 第1个月已缴税额为0
+    if (month === 1) {
+      paidTax = 0
+    }
+    
     // 当月应缴 = 累计 - 已缴
     const monthlyTax = Math.max(0, cumulativeTax - paidTax)
     
