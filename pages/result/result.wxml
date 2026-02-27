@@ -10,11 +10,6 @@
     <view class="final-label">税后收入（年度）</view>
   </view>
 
-  <view class="card main-result">
-    <view class="result-label">年度应纳税额</view>
-    <view class="result-value">¥{{result.totalTax}}</view>
-  </view>
-
   <view class="card">
     <view class="card-title">收入明细（年度）</view>
     <view class="detail-row">
@@ -60,6 +55,10 @@
     <view class="detail-row">
       <text>年终奖税额</text>
       <text>¥{{result.bonusTax}}</text>
+    </view>
+    <view class="detail-row highlight">
+      <text>年度税额合计</text>
+      <text class="highlight-value">¥{{result.totalTax}}</text>
     </view>
   </view>
 
